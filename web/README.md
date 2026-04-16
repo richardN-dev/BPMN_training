@@ -12,10 +12,25 @@ npm run dev
 
 Otevřete [http://localhost:3000](http://localhost:3000).
 
+## Push na GitHub (jednorázově)
+
+V kořeni `BPMN_training` (ne v `web/`):
+
+1. Na GitHubu vytvořte **prázdný** repozitář (bez README).
+2. Přidejte remote a pushněte větev `main`:
+
+```bash
+cd BPMN_training
+git remote add origin https://github.com/VAS_UZIVATEL/VAS_REPO.git
+git push -u origin main
+```
+
+(Přihlášení na GitHub proběhne přes prohlížeč nebo uložené údaje v Git Credential Manageru — hesla do chatu neposílejte.)
+
 ## Nasazení na Vercel
 
-1. Účet na [vercel.com](https://vercel.com) a (doporučeno) repo na GitHubu/GitLabu s tímto projektem.
-2. V Vercelu: **Add New Project** → import repozitáře → jako **Root Directory** nastavte `web` (nebo z rootu monorepo použijte „Edit“ a nastavte subdirectory na `web`).
+1. Účet na [vercel.com](https://vercel.com) a repozitář na GitHubu s tímto projektem (viz výše).
+2. V Vercelu: **Add New Project** → **Import** vašeho GitHub repozitáře → jako **Root Directory** nastavte `web`.
 3. Framework Preset: **Next.js** (automaticky). Build: `npm run build`, Output: `.next`.
 4. Deploy.
 
