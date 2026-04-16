@@ -12,6 +12,8 @@ npm run dev
 
 Otevřete [http://localhost:3000](http://localhost:3000).
 
+Obrázky v Markdownu (např. BPMN diagramy na stránkách Proces 1–4): **kliknutím** se otevře zvětšený náhled; zavření klikem mimo obrázek nebo klávesou Esc.
+
 ## Push na GitHub (jednorázově)
 
 V kořeni `BPMN_training` (ne v `web/`):

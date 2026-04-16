@@ -10,6 +10,8 @@
 
 **Publikovaný detail — Proces 3 (Řešení požadavku):** diagram z Camundy + textový popis BPMN — [https://bpmn-training.vercel.app/reseni/ukol-4/proces-3-reseni-pozadavku](https://bpmn-training.vercel.app/reseni/ukol-4/proces-3-reseni-pozadavku).
 
+**Publikovaný detail — Proces 4 (Vytvoření reportu):** diagram z Camundy + textový popis BPMN — [https://bpmn-training.vercel.app/reseni/ukol-4/proces-4-vytvoreni-reportu](https://bpmn-training.vercel.app/reseni/ukol-4/proces-4-vytvoreni-reportu).
+
 ---
 
 ## Požadavky ze zadání (kontrolní seznam)

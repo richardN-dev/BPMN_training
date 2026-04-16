@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { ZoomableImage } from "@/components/ZoomableImage";
 
 type Props = {
   content: string;
@@ -12,10 +13,9 @@ export function MarkdownBody({ content }: Props) {
         remarkPlugins={[remarkGfm]}
         components={{
           img: ({ src, alt }) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={src}
-              alt={alt ?? ""}
+            <ZoomableImage
+              src={typeof src === "string" ? src : undefined}
+              alt={alt ?? undefined}
               className="max-w-full h-auto rounded-lg border border-slate-200 bg-white"
             />
           ),
