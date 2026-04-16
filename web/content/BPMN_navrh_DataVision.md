@@ -6,6 +6,8 @@
 
 **Publikovaný detail — Proces 1 (Sales):** [diagram z Camundy + textový popis BPMN](/reseni/ukol-4/proces-1-sales).
 
+**Publikovaný detail — Proces 2 (Realizace IT):** [diagram z Camundy + textový popis BPMN](/reseni/ukol-4/proces-2-realizace).
+
 ---
 
 ## Požadavky ze zadání (kontrolní seznam)
