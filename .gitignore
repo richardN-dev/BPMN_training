@@ -1,0 +1,24 @@
+# Citlivé údaje – nikdy neukládat do Gitu
+.env
+.env.local
+.env.*.local
+
+# SpecStory (volitelné – identity soubory)
+.specstory/.project.json
+.specstory/.what-is-this.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dočasné soubory
+*.tmp
+*.bak
+*~
+
+# Next.js (web/)
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/*.tsbuildinfo

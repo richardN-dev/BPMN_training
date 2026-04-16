@@ -1,0 +1,54 @@
+%% Zjednodušený CPM (Mermaid neumí mřížkové PDM uzly s ES/EF/LS/LF – ty jsou v CPM_kriticka_cesta_grid.html)
+%% CPM – síť činností, kritická cesta A→C→D→F→H→I→K→L (červené hrany přes linkStyle)
+%% Pořadí hran = pořadí indexů pro linkStyle: nejdřív kritická cesta (0–6), pak ostatní (7–13)
+
+flowchart TB
+  A["A<br/>3 MD"]
+  B["B<br/>2 MD"]
+  C["C<br/>3 MD"]
+  D["D<br/>4 MD"]
+  E["E<br/>2 MD"]
+  F["F<br/>6 MD"]
+  G["G<br/>5 MD"]
+  H["H<br/>3 MD"]
+  I["I<br/>4 MD"]
+  J["J<br/>2 MD"]
+  K["K<br/>2 MD"]
+  L["L<br/>1 MD"]
+
+  A --> C
+  C --> D
+  D --> F
+  F --> H
+  H --> I
+  I --> K
+  K --> L
+
+  A --> B
+  B --> D
+  C --> E
+  E --> G
+  G --> H
+  H --> J
+  J --> K
+
+  classDef crit fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#b71c1c
+  classDef noncrit fill:#eceff1,stroke:#546e7a,stroke-width:2px,color:#37474f
+
+  class A,C,D,F,H,I,K,L crit
+  class B,E,G,J noncrit
+
+  linkStyle 0 stroke:#c62828,stroke-width:4px
+  linkStyle 1 stroke:#c62828,stroke-width:4px
+  linkStyle 2 stroke:#c62828,stroke-width:4px
+  linkStyle 3 stroke:#c62828,stroke-width:4px
+  linkStyle 4 stroke:#c62828,stroke-width:4px
+  linkStyle 5 stroke:#c62828,stroke-width:4px
+  linkStyle 6 stroke:#c62828,stroke-width:4px
+  linkStyle 7 stroke:#78909c,stroke-width:2.5px
+  linkStyle 8 stroke:#78909c,stroke-width:2.5px
+  linkStyle 9 stroke:#78909c,stroke-width:2.5px
+  linkStyle 10 stroke:#78909c,stroke-width:2.5px
+  linkStyle 11 stroke:#78909c,stroke-width:2.5px
+  linkStyle 12 stroke:#78909c,stroke-width:2.5px
+  linkStyle 13 stroke:#78909c,stroke-width:2.5px

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CPM – PDM uzly (ES/EF, LS/LF, float) – DataVision</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      margin: 0;
+      padding: 16px 20px 32px;
+      background: #f5f5f5;
+      color: #222;
+    }
+    h1 { font-size: 1.1rem; margin: 0 0 4px; font-weight: 600; }
+    .sub { font-size: 0.85rem; color: #555; margin-bottom: 12px; }
+    .diagram-wrap {
+      position: relative;
+      width: 1280px;
+      height: 460px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    svg.network { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+    .nodes-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+    .cpm-node {
+      position: absolute;
+      width: 118px;
+      background: #fff;
+      border: 2px solid #333;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+      pointer-events: auto;
+    }
+    .cpm-node.critical { border-color: #c62828; }
+    .row-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      font-size: 11px;
+      line-height: 1.2;
+      padding: 4px 6px;
+      border-bottom: 1px solid #999;
+      min-height: 28px;
+      align-items: center;
+    }
+    .es, .ef { color: #2e7d32; font-weight: 700; text-align: center; }
+    .dur { color: #111; font-weight: 700; text-align: center; font-size: 12px; }
+    .name {
+      text-align: center;
+      font-weight: 800;
+      font-size: 18px;
+      padding: 6px 4px;
+      border-bottom: 1px solid #999;
+      background: #fafafa;
+    }
+    .row-bot {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      font-size: 11px;
+      padding: 2px 6px 4px;
+      min-height: 36px;
+      align-items: end;
+    }
+    .ls, .lf { color: #1565c0; font-weight: 700; text-align: center; }
+    .bar-cell {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 2px 0;
+    }
+    .float-bar {
+      min-width: 36px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .float-bar.tf-zero { background: #c62828; }
+    .float-bar.tf-slack { background: #2e7d32; }
+    .legend-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px 24px;
+      font-size: 0.8rem;
+      max-width: 1280px;
+    }
+    .legend-box span { display: flex; align-items: center; gap: 8px; }
+    .hint { font-size: 0.78rem; color: #666; margin-top: 12px; max-width: 1280px; }
+    .corner-tl { position: absolute; left: 8px; top: 8px; font-size: 0.72rem; color: #444; max-width: 280px; z-index: 3; }
+    .corner-br { position: absolute; right: 8px; bottom: 8px; font-size: 0.72rem; color: #444; max-width: 320px; text-align: right; z-index: 3; }
+  </style>
+</head>
+<body>
+  <h1>CPM – precedenční diagram (PDM) s časovými parametry</h1>
+  <p class="sub">Projekt: interní datová aplikace pro reporting zakázek · Kritická cesta: <strong>A → C → D → F → H → I → K → L</strong> · Celková doba: <strong>26</strong> (jednotky jako v tabulce zadání: MD)</p>
+
+  <div class="corner-tl">Fast Tracking = provádět více činností paralelně (např. B ∥ C, F ∥ G, I ∥ J)</div>
+  <div class="corner-br">Crash the critical path = zkrátit trvání kritických činností přidáním kapacity (náklad vs. termín)</div>
+
+  <div class="diagram-wrap" id="diagram">
+    <svg class="network" viewBox="0 0 1280 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 0,8 4,0 8" fill="#c62828"/></marker>
+        <marker id="ag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#424242"/></marker>
+      </defs>
+      <!-- Uzel 118×~96 px; střed y = top+48. Pravý okraj = left+118. -->
+      <!-- Šedé (nekritické) návaznosti -->
+      <g stroke="#424242" stroke-width="2" fill="none" marker-end="url(#ag)">
+        <line x1="168" y1="248" x2="170" y2="138" />
+        <line x1="288" y1="138" x2="330" y2="238" />
+        <line x1="288" y1="318" x2="330" y2="338" />
+        <line x1="448" y1="338" x2="490" y2="338" />
+        <line x1="608" y1="338" x2="650" y2="248" />
+        <line x1="768" y1="248" x2="810" y2="338" />
+        <line x1="928" y1="338" x2="970" y2="248" />
+      </g>
+      <!-- Červené (kritická cesta) -->
+      <g stroke="#c62828" stroke-width="4" fill="none" marker-end="url(#ar)">
+        <line x1="168" y1="248" x2="170" y2="318" />
+        <line x1="288" y1="318" x2="330" y2="238" />
+        <line x1="448" y1="238" x2="490" y2="198" />
+        <line x1="608" y1="198" x2="650" y2="248" />
+        <line x1="768" y1="248" x2="810" y2="198" />
+        <line x1="928" y1="198" x2="970" y2="248" />
+        <line x1="1088" y1="248" x2="1110" y2="248" />
+      </g>
+    </svg>
+
+    <div class="nodes-layer">
+      <!-- data: left,top — ES,EF,LS,LF display 1-based from 0-based CPM table; TF = total float -->
+      <!-- A critical -->
+      <div class="cpm-node critical" style="left:50px;top:200px;">
+        <div class="row-top"><span class="es">1</span><span class="dur">3</span><span class="ef">3</span></div>
+        <div class="name">A</div>
+        <div class="row-bot">
+          <span class="ls">1</span>
+          <span class="bar-cell"><span class="float-bar tf-zero" title="Total Float">TF 0</span></span>
+          <span class="lf">3</span>
+        </div>
+      </div>
+      <!-- B -->
+      <div class="cpm-node" style="left:170px;top:90px;">
+        <div class="row-top"><span class="es">4</span><span class="dur">2</span><span class="ef">5</span></div>
+        <div class="name">B</div>
+        <div class="row-bot">
+          <span class="ls">5</span>
+          <span class="bar-cell"><span class="float-bar tf-slack" title="Total Float">TF 1</span></span>
+          <span class="lf">6</span>
+        </div>
+      </div>
+      <!-- C critical -->
+      <div class="cpm-node critical" style="left:170px;top:270px;">
+        <div class="row-top"><span class="es">4</span><span class="dur">3</span><span class="ef">6</span></div>
+        <div class="name">C</div>
+        <div class="row-bot">
+          <span class="ls">4</span>
+          <span class="bar-cell"><span class="float-bar tf-zero">TF 0</span></span>
+          <span class="lf">6</span>
+        </div>
+      </div>
+      <!-- D critical -->
+      <div class="cpm-node critical" style="left:330px;top:190px;">
+        <div class="row-top"><span class="es">7</span><span class="dur">4</span><span class="ef">10</span></div>
+        <div class="name">D</div>
+        <div class="row-bot">
+          <span class="ls">7</span>
+          <span class="bar-cell"><span class="float-bar tf-zero">TF 0</span></span>
+          <span class="lf">10</span>
+        </div>
+      </div>
+      <!-- E -->
+      <div class="cpm-node" style="left:330px;top:290px;">
+        <div class="row-top"><span class="es">7</span><span class="dur">2</span><span class="ef">8</span></div>
+        <div class="name">E</div>
+        <div class="row-bot">
+          <span class="ls">10</span>
+          <span class="bar-cell"><span class="float-bar tf-slack">TF 3</span></span>
+          <span class="lf">11</span>
+        </div>
+      </div>
+      <!-- F critical -->
+      <div class="cpm-node critical" style="left:490px;top:150px;">
+        <div class="row-top"><span class="es">11</span><span class="dur">6</span><span class="ef">16</span></div>
+        <div class="name">F</div>
+        <div class="row-bot">
+          <span class="ls">11</span>
+          <span class="bar-cell"><span class="float-bar tf-zero">TF 0</span></span>
+          <span class="lf">16</span>
+        </div>
+      </div>
+      <!-- G -->
+      <div class="cpm-node" style="left:490px;top:290px;">
+        <div class="row-top"><span class="es">9</span><span class="dur">5</span><span class="ef">13</span></div>
+        <div class="name">G</div>
+        <div class="row-bot">
+          <span class="ls">12</span>
+          <span class="bar-cell"><span class="float-bar tf-slack">TF 3</span></span>
+          <span class="lf">16</span>
+        </div>
+      </div>
+      <!-- H critical -->
+      <div class="cpm-node critical" style="left:650px;top:200px;">
+        <div class="row-top"><span class="es">17</span><span class="dur">3</span><span class="ef">19</span></div>
+        <div class="name">H</div>
+        <div class="row-bot">
+          <span class="ls">17</span>
+          <span class="bar-cell"><span class="float-bar tf-zero">TF 0</span></span>
+          <span class="lf">19</span>
+        </div>
+      </div>
+      <!-- I critical -->
+      <div class="cpm-node critical" style="left:810px;top:150px;">
+        <div class="row-top"><span class="es">20</span><span class="dur">4</span><span class="ef">23</span></div>
+        <div class="name">I</div>
+        <div class="row-bot">
+          <span class="ls">20</span>
+          <span class="bar-cell"><span class="float-bar tf-zero">TF 0</span></span>
+          <span class="lf">23</span>
+        </div>
+      </div>
+      <!-- J -->
+      <div class="cpm-node" style="left:810px;top:290px;">
+        <div class="row-top"><span class="es">20</span><span class="dur">2</span><span class="ef">21</span></div>
+        <div class="name">J</div>
+        <div class="row-bot">
+          <span class="ls">22</span>
+          <span class="bar-cell"><span class="float-bar tf-slack">TF 2</span></span>
+          <span class="lf">23</span>
+        </div>
+      </div>
+      <!-- K critical -->
+      <div class="cpm-node critical" style="left:970px;top:200px;">
+        <div class="row-top"><span class="es">24</span><span class="dur">2</span><span class="ef">25</span></div>
+        <div class="name">K</div>
+        <div class="row-bot">
+          <span class="ls">24</span>
+          <span class="bar-cell"><span class="float-bar tf-zero">TF 0</span></span>
+          <span class="lf">25</span>
+        </div>
+      </div>
+      <!-- L critical -->
+      <div class="cpm-node critical" style="left:1110px;top:200px;">
+        <div class="row-top"><span class="es">26</span><span class="dur">1</span><span class="ef">26</span></div>
+        <div class="name">L</div>
+        <div class="row-bot">
+          <span class="ls">26</span>
+          <span class="bar-cell"><span class="float-bar tf-zero">TF 0</span></span>
+          <span class="lf">26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend-box">
+    <span><strong style="color:#2e7d32">■</strong> Early Start / Early Finish (nejčasnější)</span>
+    <span><strong style="color:#1565c0">■</strong> Late Start / Late Finish (nej později)</span>
+    <span><strong style="color:#111">■</strong> Trvání (uprostřed nahoře)</span>
+    <span><strong style="color:#c62828">■</strong> Total Float 0 – kritická cesta (červený pruh)</span>
+    <span><strong style="color:#2e7d32">■</strong> Total Float &gt; 0 – rezerva (zelený pruh)</span>
+    <span><strong style="color:#c62828">━</strong> Kritická cesta (červené šipky)</span>
+    <span><strong style="color:#424242">━</strong> Ostatní návaznosti (černé šipky)</span>
+  </div>
+  <p class="hint">
+    Čísla ES/EF/LS/LF jsou zobrazena v „kalendářních“ jednotkách od začátku projektu (den 1 = start A), konzistentně s výpočtem v <code>CPM_projekt_DataVision.md</code>.
+    <em>Drag</em> (samočinné prodloužení projektu) u kritických činností lze v pokročilé analýze dopočítat zvlášť; zde je u kritických uzlů uvedeno <strong>TF 0</strong> (total float).
+  </p>
+</body>
+</html>

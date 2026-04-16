@@ -1,0 +1,30 @@
+---
+description: Pravidla pro zahájení projektu – projektový kontext a výběr rolí
+alwaysApply: true
+---
+
+# Pravidla pro zahájení projektu
+
+## PRAVIDLO: Vždy používej NEJVYŠŠÍ verzi profilu
+
+Pokud existuje více verzí profilu role (např. v1.0, v1.1, v2.0), **vždy používej nejvyšší dostupnou verzi**. Zkontroluj pole `version` v YAML hlavičce každého profilu.
+
+## PRAVIDLO: Vyžaduj projektový kontext
+
+Na začátku každého projektu:
+
+1. **Zkontroluj** zda existuje `input/project_context.md`
+2. Pokud **neexistuje** – požádej uživatele o vyplnění šablony z `templates/project_context.md`
+3. Pokud **existuje** – načti ho a řiď se jím
+
+## PRAVIDLO: Výběr rolí
+
+1. Zeptej se: „S jakými rolemi budeme na tomto projektu pracovat?"
+2. Pro vybrané role aktivuj příslušné profily z `roles/`
+3. Přehled rolí je v `roles/README.md`
+
+## Verzování profilů
+
+- Profily mají verzi v YAML hlavičce (pole `version`)
+- Při úpravě profilu zvyš minor verzi a zapiš do `revisions`
+- Při zásadní změně zvyš major verzi

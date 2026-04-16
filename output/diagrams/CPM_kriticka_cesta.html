@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CPM – síť činností a kritická cesta (DataVision)</title>
+  <style>
+    body { font-family: Segoe UI, system-ui, sans-serif; margin: 1rem 1.5rem; background: #fafafa; color: #222; }
+    h1 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.25rem; }
+    p.meta { font-size: 0.9rem; color: #555; margin: 0 0 1rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; font-size: 0.85rem; margin-top: 1rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .line-red { width: 28px; height: 0; border-top: 4px solid #c62828; }
+    .line-gray { width: 28px; height: 0; border-top: 3px solid #78909c; }
+    svg { max-width: 100%; height: auto; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>CPM – vizualizace činností a kritické cesty</h1>
+  <p class="meta">Projekt: Vývoj interní datové aplikace pro reporting zakázek · Celková doba: <strong>26 MD</strong></p>
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" role="img" aria-label="Síť činností CPM, kritická cesta červeně">
+    <defs>
+      <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+        <polygon points="0 0, 8 4, 0 8" fill="#c62828" />
+      </marker>
+      <marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+        <polygon points="0 0, 7 3.5, 0 7" fill="#78909c" />
+      </marker>
+    </defs>
+
+    <!-- Hrany: nejdřív šedé, pak červené (aby červené byly nahoře) -->
+    <!-- A->B -->
+    <line x1="118" y1="208" x2="168" y2="128" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <!-- B->D -->
+    <line x1="228" y1="128" x2="298" y2="188" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <!-- C->E -->
+    <line x1="228" y1="288" x2="298" y2="308" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <!-- E->G -->
+    <line x1="368" y1="308" x2="418" y2="308" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <!-- G->H -->
+    <line x1="488" y1="308" x2="548" y2="258" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <!-- H->J -->
+    <line x1="628" y1="228" x2="688" y2="288" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <!-- J->K -->
+    <line x1="768" y1="308" x2="808" y2="248" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+
+    <!-- Kritická cesta (červeně) -->
+    <!-- A->C -->
+    <line x1="118" y1="228" x2="168" y2="288" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+    <!-- C->D -->
+    <line x1="228" y1="288" x2="298" y2="228" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+    <!-- D->F -->
+    <line x1="368" y1="208" x2="418" y2="188" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+    <!-- F->H -->
+    <line x1="488" y1="188" x2="548" y2="218" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+    <!-- H->I -->
+    <line x1="628" y1="218" x2="688" y2="188" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+    <!-- I->K -->
+    <line x1="768" y1="188" x2="808" y2="228" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+    <!-- K->L -->
+    <line x1="888" y1="228" x2="938" y2="228" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+
+    <!-- Uzly -->
+    <g id="nodes">
+      <!-- kritické uzly: červený obrys -->
+      <rect x="60" y="200" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="89" y="228" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">A</text>
+      <text x="89" y="244" text-anchor="middle" font-size="11" fill="#5d4037">3 MD</text>
+
+      <rect x="170" y="260" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="199" y="288" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">C</text>
+      <text x="199" y="304" text-anchor="middle" font-size="11" fill="#5d4037">3 MD</text>
+
+      <rect x="300" y="180" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="329" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">D</text>
+      <text x="329" y="224" text-anchor="middle" font-size="11" fill="#5d4037">4 MD</text>
+
+      <rect x="420" y="140" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="449" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">F</text>
+      <text x="449" y="184" text-anchor="middle" font-size="11" fill="#5d4037">6 MD</text>
+
+      <rect x="550" y="190" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="579" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">H</text>
+      <text x="579" y="234" text-anchor="middle" font-size="11" fill="#5d4037">3 MD</text>
+
+      <rect x="690" y="140" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="719" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">I</text>
+      <text x="719" y="184" text-anchor="middle" font-size="11" fill="#5d4037">4 MD</text>
+
+      <rect x="810" y="190" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="839" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">K</text>
+      <text x="839" y="234" text-anchor="middle" font-size="11" fill="#5d4037">2 MD</text>
+
+      <rect x="940" y="190" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+      <text x="969" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c">L</text>
+      <text x="969" y="234" text-anchor="middle" font-size="11" fill="#5d4037">1 MD</text>
+
+      <!-- nekritické -->
+      <rect x="170" y="100" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+      <text x="199" y="128" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f">B</text>
+      <text x="199" y="144" text-anchor="middle" font-size="11" fill="#546e7a">2 MD</text>
+
+      <rect x="300" y="280" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+      <text x="329" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f">E</text>
+      <text x="329" y="324" text-anchor="middle" font-size="11" fill="#546e7a">2 MD</text>
+
+      <rect x="420" y="280" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+      <text x="449" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f">G</text>
+      <text x="449" y="324" text-anchor="middle" font-size="11" fill="#546e7a">5 MD</text>
+
+      <rect x="690" y="260" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+      <text x="719" y="288" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f">J</text>
+      <text x="719" y="304" text-anchor="middle" font-size="11" fill="#546e7a">2 MD</text>
+    </g>
+
+    <text x="89" y="28" font-size="14" font-weight="600" fill="#333">Kritická cesta: A → C → D → F → H → I → K → L</text>
+    <text x="89" y="48" font-size="12" fill="#666">Červené šipky a červeně orámované činnosti · Šedé = mimo kritickou cestu (rezerva &gt; 0)</text>
+  </svg>
+
+  <div class="legend">
+    <span><span class="line-red"></span> Kritická cesta (rezerva 0)</span>
+    <span><span class="line-gray"></span> Nekritické návaznosti</span>
+  </div>
+</body>
+</html>

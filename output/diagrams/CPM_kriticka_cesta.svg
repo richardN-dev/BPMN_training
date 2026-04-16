@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" role="img" aria-label="Síe inností CPM, kritická cesta erven">
+  <defs>
+    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#c62828" />
+    </marker>
+    <marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#78909c" />
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <line x1="118" y1="208" x2="168" y2="128" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+  <line x1="228" y1="128" x2="298" y2="188" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+  <line x1="228" y1="288" x2="298" y2="308" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+  <line x1="368" y1="308" x2="418" y2="308" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+  <line x1="488" y1="308" x2="548" y2="258" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+  <line x1="628" y1="228" x2="688" y2="288" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+  <line x1="768" y1="308" x2="808" y2="248" stroke="#78909c" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+
+  <line x1="118" y1="228" x2="168" y2="288" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+  <line x1="228" y1="288" x2="298" y2="228" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+  <line x1="368" y1="208" x2="418" y2="188" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+  <line x1="488" y1="188" x2="548" y2="218" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+  <line x1="628" y1="218" x2="688" y2="188" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+  <line x1="768" y1="188" x2="808" y2="228" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+  <line x1="888" y1="228" x2="938" y2="228" stroke="#c62828" stroke-width="4" marker-end="url(#arrow-red)" />
+
+  <g id="nodes">
+    <rect x="60" y="200" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="89" y="228" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">A</text>
+    <text x="89" y="244" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">3 MD</text>
+
+    <rect x="170" y="260" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="199" y="288" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">C</text>
+    <text x="199" y="304" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">3 MD</text>
+
+    <rect x="300" y="180" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="329" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">D</text>
+    <text x="329" y="224" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">4 MD</text>
+
+    <rect x="420" y="140" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="449" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">F</text>
+    <text x="449" y="184" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">6 MD</text>
+
+    <rect x="550" y="190" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="579" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">H</text>
+    <text x="579" y="234" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">3 MD</text>
+
+    <rect x="690" y="140" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="719" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">I</text>
+    <text x="719" y="184" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">4 MD</text>
+
+    <rect x="810" y="190" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="839" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">K</text>
+    <text x="839" y="234" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">2 MD</text>
+
+    <rect x="940" y="190" width="58" height="56" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="3" />
+    <text x="969" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#b71c1c" font-family="Segoe UI, system-ui, sans-serif">L</text>
+    <text x="969" y="234" text-anchor="middle" font-size="11" fill="#5d4037" font-family="Segoe UI, system-ui, sans-serif">1 MD</text>
+
+    <rect x="170" y="100" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+    <text x="199" y="128" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f" font-family="Segoe UI, system-ui, sans-serif">B</text>
+    <text x="199" y="144" text-anchor="middle" font-size="11" fill="#546e7a" font-family="Segoe UI, system-ui, sans-serif">2 MD</text>
+
+    <rect x="300" y="280" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+    <text x="329" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f" font-family="Segoe UI, system-ui, sans-serif">E</text>
+    <text x="329" y="324" text-anchor="middle" font-size="11" fill="#546e7a" font-family="Segoe UI, system-ui, sans-serif">2 MD</text>
+
+    <rect x="420" y="280" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+    <text x="449" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f" font-family="Segoe UI, system-ui, sans-serif">G</text>
+    <text x="449" y="324" text-anchor="middle" font-size="11" fill="#546e7a" font-family="Segoe UI, system-ui, sans-serif">5 MD</text>
+
+    <rect x="690" y="260" width="58" height="56" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="2" />
+    <text x="719" y="288" text-anchor="middle" font-size="13" font-weight="600" fill="#37474f" font-family="Segoe UI, system-ui, sans-serif">J</text>
+    <text x="719" y="304" text-anchor="middle" font-size="11" fill="#546e7a" font-family="Segoe UI, system-ui, sans-serif">2 MD</text>
+  </g>
+
+  <text x="89" y="28" font-size="14" font-weight="600" fill="#333" font-family="Segoe UI, system-ui, sans-serif">Kritická cesta: A ’ C ’ D ’ F ’ H ’ I ’ K ’ L</text>
+  <text x="89" y="48" font-size="12" fill="#666" font-family="Segoe UI, system-ui, sans-serif">ervené aipky a erven orámované innosti · `edé = mimo kritickou cestu (rezerva &gt; 0)</text>
+</svg>

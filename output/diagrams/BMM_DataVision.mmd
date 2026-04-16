@@ -1,0 +1,87 @@
+%% Business Motivation Model – DataVision s.r.o. (zjednodušená struktura OMG BMM)
+%% Export: npx @mermaid-js/mermaid-cli -i BMM_DataVision.mmd -o BMM_DataVision.png -b white -w 1800
+
+flowchart TB
+  subgraph INF["Influencers – vlivy"]
+    direction TB
+    EX["Externí EX1–EX6<br/>konkurence, regulace, ekonomika,<br/>trh práce, tech, očekávání"]
+    IN["Interní IN1–IN6<br/>kapacity, klíčoví lidé, reference,<br/>finance, marketing, tech stack"]
+  end
+
+  ASM["Assessment<br/>O / T a dopad na firmu"]
+
+  EX --> ASM
+  IN --> ASM
+
+  V["Vision<br/>Spolehlivý partner středních firem<br/>pro datově řízené rozhodování<br/>(BI, integrace, on-prem/hybrid)"]
+
+  subgraph G["Goals"]
+    direction LR
+    G1["G1 Udržitelný růst"]
+    G2["G2 Diferenciace hodnotou"]
+    G3["G3 Odolnost vůči trhu"]
+    G4["G4 Compliance a důvěra"]
+  end
+
+  O["Objectives O1–O5<br/>podíl integrací, retence, rizika lidí,<br/>stabilita, viditelnost odbornosti"]
+
+  subgraph S["Strategies"]
+    direction TB
+    S1["S1 Specializace segment"]
+    S2["S2 Posun nabídky nahoru"]
+    S3["S3 Reference + viditelnost"]
+    S4["S4 Řízení kapacity"]
+    S5["S5 Hybrid / on-prem"]
+  end
+
+  T["Tactics T1–T6<br/>šablony, obsah 1× měs., smluvní limity,<br/>mentoring, školení, ESG mapa"]
+
+  subgraph D["Directives"]
+    direction LR
+    P["Policies P1–P5"]
+    BR["Business Rules BR1–BR5"]
+  end
+
+  V --> G1
+  V --> G2
+  V --> G3
+  V --> G4
+
+  G1 --> O
+  G2 --> O
+  G3 --> O
+  G4 --> O
+
+  O --> S1
+  O --> S2
+  O --> S3
+  O --> S4
+  O --> S5
+
+  S1 --> T
+  S2 --> T
+  S3 --> T
+  S4 --> T
+  S5 --> T
+
+  P -.->|řídí| S1
+  P -.->|řídí| S2
+  P -.->|řídí| S3
+  P -.->|řídí| S4
+  P -.->|řídí| S5
+  BR --> T
+
+  ASM -.->|ovlivňuje| G2
+  ASM -.->|ovlivňuje| S2
+
+  classDef infStyle fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#4a148c
+  classDef asmStyle fill:#ede7f6,stroke:#4527a0,stroke-width:2px
+  classDef endsStyle fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px,color:#0d47a1
+  classDef meansStyle fill:#fff8e1,stroke:#f57f17,stroke-width:2px,color:#e65100
+  classDef dirStyle fill:#eceff1,stroke:#37474f,stroke-width:2px,color:#263238
+
+  class EX,IN infStyle
+  class ASM asmStyle
+  class V,G1,G2,G3,G4,O endsStyle
+  class S1,S2,S3,S4,S5,T meansStyle
+  class P,BR dirStyle
