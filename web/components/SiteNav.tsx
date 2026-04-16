@@ -7,6 +7,7 @@ const links = [
   { href: "/reseni/ukol-2", label: "Úkol 2" },
   { href: "/reseni/ukol-3", label: "Úkol 3" },
   { href: "/reseni/ukol-4", label: "Úkol 4" },
+  { href: "/reseni/ukol-4/proces-1-sales", label: "Proces 1 (Sales)" },
 ] as const;
 
 export function SiteNav() {

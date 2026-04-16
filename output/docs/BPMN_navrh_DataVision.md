@@ -4,6 +4,8 @@
 **Účel:** návrh **čtyř procesů** ve standardu **BPMN 2.0** podle případové studie.  
 **Výstupy:** tento dokument (popis poolů, lanes, událostí, úloh, brán a toků) + diagramy v Mermaid (náhled); pro **formální BPMN 2.0 XML** lze stejnou strukturu přenést do **Camunda Modeler** / **Draw.io** (BPMN šablona).
 
+**Publikovaný detail — Proces 1 (Sales):** diagram z Camundy + textový popis BPMN — [https://bpmn-training.vercel.app/reseni/ukol-4/proces-1-sales](https://bpmn-training.vercel.app/reseni/ukol-4/proces-1-sales).
+
 ---
 
 ## Požadavky ze zadání (kontrolní seznam)
