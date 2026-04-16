@@ -34,6 +34,8 @@ git push -u origin main
 3. Framework Preset: **Next.js** (automaticky). Build: `npm run build`, Output: `.next`.
 4. Deploy.
 
+**Pokud po nasazení vidíte jen Vercel `404 NOT_FOUND`:** v **Build and Deployment → Framework** musí být **Next.js**, ne „Other“. U Next.js nechte **Output Directory** prázdné (nepřepisovat na `out` ani `.next` ručně). Viz [Vercel: 404 po deployi](https://vercel.com/guides/why-is-my-deployed-project-giving-404).
+
 **CLI (alternativa):**
 
 ```bash
