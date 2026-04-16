@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/SiteNav";
+import { PresentationBackNav } from "@/components/PresentationBackNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-50 text-slate-900 antialiased`}
       >
         <SiteNav />
-        <main className="mx-auto max-w-5xl px-4 py-10">{children}</main>
+        <main className="mx-auto max-w-5xl px-4 py-10">
+          <PresentationBackNav />
+          {children}
+        </main>
         <footer className="border-t border-slate-200 mt-16 py-8 text-center text-sm text-slate-500">
           Materiály pro školení · DataVision s.r.o. (fiktivní případová studie)
         </footer>

@@ -57,7 +57,7 @@ export default function HomePage() {
               n: "4",
               title: "BPMN 2.0 — čtyři procesy",
               href: "/reseni/ukol-4",
-              desc: "Sales, realizace projektu, incident/change, BI report. Detail Proces 1 (diagram + popis) je zvlášť.",
+              desc: "Původní řešení a čtyři procesy (Sales, realizace, požadavek, report) — diagramy a popisy.",
             },
           ].map((item) => (
             <li key={item.n}>
