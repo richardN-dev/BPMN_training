@@ -9,6 +9,7 @@ const links = [
   { href: "/reseni/ukol-4", label: "Úkol 4" },
   { href: "/reseni/ukol-4/proces-1-sales", label: "Proces 1 (Sales)" },
   { href: "/reseni/ukol-4/proces-2-realizace", label: "Proces 2 (Realizace)" },
+  { href: "/reseni/ukol-4/proces-3-reseni-pozadavku", label: "Proces 3 (Požadavek)" },
 ] as const;
 
 export function SiteNav() {
